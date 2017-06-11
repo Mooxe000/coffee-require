@@ -3,11 +3,11 @@ CoffeeRequire_src = require '../src'
 CoffeeRequire_main = require '../index'
 
 hello_src = (
-  CoffeeRequire_src './hello'
+  CoffeeRequire_src.require './hello'
 ).default
 hello_src()
 
 hello_main = (
-  CoffeeRequire_main './hello'
+  CoffeeRequire_main.require './hello'
 ).default
 hello_main()
