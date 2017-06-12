@@ -1,8 +1,7 @@
 path = require 'path'
 fs = require 'fs'
-babel = require 'babel-core'
-CoffeeScript = require 'coffeescript'
 requireFromString = require 'require-from-string'
+compile = require './compile'
 
 module.exports = (coffeeSource, filePath) ->
 
@@ -16,16 +15,6 @@ module.exports = (coffeeSource, filePath) ->
   if (fs.statSync require_file).isDirectory()
     require_file = path.join require_file, './index.coffee'
 
-  coffee_to_es6 = CoffeeScript._compileFile require_file
+  code = compile require_file
 
-  es6_to_es5 = babel.transform coffee_to_es6
-  ,
-    presets: [
-      'env'
-    ]
-  ,
-    plugins: [
-      'transform-runtime'
-    ]
-
-  requireFromString es6_to_es5.code
+  requireFromString code

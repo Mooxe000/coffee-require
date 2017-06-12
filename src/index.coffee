@@ -4,4 +4,4 @@ module.exports =
     filePath or= module.parent.filename
     (require './require') coffeeSource, filePath
 
-  register: require './register'
+  # register: require './register'

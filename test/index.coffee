@@ -11,3 +11,10 @@ hello_main = (
   CoffeeRequire_main.require './hello'
 ).default
 hello_main()
+
+require '../register'
+
+hello = (
+  require './hello'
+).default
+hello()
