@@ -10,7 +10,11 @@ module.exports = (filename) ->
   es5 = babel.transform es6
   ,
     presets: [
-      'env'
+      [
+        'env'
+        targets:
+          node: true
+      ]
     ]
   ,
     plugins: [
