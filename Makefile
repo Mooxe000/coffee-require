@@ -11,3 +11,6 @@ docker:
 
 tst:
 	@coffee $$(pwd)/test/index.coffee
+
+publish:
+	npm publish

@@ -5,3 +5,5 @@ module.exports =
     (require './require') coffeeSource, filePath
 
   # register: require './register'
+
+  gdf: (obj) -> obj.default
