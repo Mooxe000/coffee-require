@@ -1,20 +1,28 @@
 #!/usr/bin/env coffee
+require 'shelljs/make'
+echo = console.log
+dd = require 'ddeyes'
+
 CoffeeRequire_src = require '../src'
 CoffeeRequire_main = require '../index'
+{ gdf } = CoffeeRequire_src
 
-hello_src = (
-  CoffeeRequire_src.require './hello'
-).default
-hello_src()
+target.hello = ->
 
-hello_main = (
-  CoffeeRequire_main.require './hello'
-).default
-hello_main()
+  hello_src = gdf CoffeeRequire_src.require './hello'
+  hello_src()
 
-require '../register'
+  hello_main = gdf CoffeeRequire_main.require './hello'
+  hello_main()
 
-hello = (
-  require './hello'
-).default
-hello()
+  require '../register'
+
+  hello = gdf require './hello'
+  hello()
+
+target.spread = ->
+  spread = gdf CoffeeRequire_src.require './spread'
+  dd spread()
+
+target.all = ->
+  echo 'Hello World!!!'
