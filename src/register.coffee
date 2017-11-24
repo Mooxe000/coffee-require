@@ -1,7 +1,7 @@
-CoffeeScript = require 'coffeescript'
-compile = require './compile'
+import CoffeeScript from 'coffeescript'
+import compile from './compile'
 
-path = require 'path'
+import path from 'path'
 
 loadFile = (module, filename) ->
   answer = compile filename
@@ -14,7 +14,9 @@ if require.extensions
   Module = require 'module'
 
   findExtension = (filename) ->
-    extensions = path.basename(filename).split '.'
+    extensions = path
+    .basename filename
+    .split '.'
     extensions.shift() if extensions[0] is ''
     while extensions.shift()
       curExtension = '.' + extensions.join '.'
@@ -25,5 +27,5 @@ if require.extensions
     @filename = filename
     @paths = Module._nodeModulePaths path.dirname filename
     extension = findExtension filename
-    Module._extensions[extension](this, filename)
+    Module._extensions[extension] @, filename
     @loaded = true

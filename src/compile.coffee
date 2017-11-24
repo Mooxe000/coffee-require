@@ -1,13 +1,15 @@
-CoffeeScript = require 'coffeescript'
-babel = require 'babel-core'
+import CoffeeScript from 'coffeescript'
+import babel from 'babel-core'
 
-module.exports = (filename) ->
+coffeeFileToes6 = (filename) ->
 
-  es6 = CoffeeScript._compileFile filename
+  CoffeeScript._compileFile filename
   , no
   , yes
 
-  es5 = babel.transform es6
+es6Toes5 = (code) ->
+
+  es5 = babel.transform code
   ,
     presets: [
       [
@@ -22,3 +24,7 @@ module.exports = (filename) ->
     ]
 
   es5.code
+
+export default (filename) ->
+
+  es6Toes5 coffeeFileToes6 filename

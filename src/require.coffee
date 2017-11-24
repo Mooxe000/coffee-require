@@ -1,9 +1,9 @@
-path = require 'path'
-fs = require 'fs'
-requireFromString = require 'require-from-string'
-compile = require './compile'
+import path from 'path'
+import fs from 'fs'
+import requireFromString from 'require-from-string'
+import compile from './compile'
 
-module.exports = (coffeeSource, filePath) ->
+export default (coffeeSource, filePath) ->
 
   filePath or= module.parent.filename
 

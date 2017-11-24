@@ -6,4 +6,7 @@ export default ->
   hello =
     world: 'coffee'
 
-  { too..., hello... }
+  {
+    too...
+    hello...
+  }

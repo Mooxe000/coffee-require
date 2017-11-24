@@ -1,8 +1,10 @@
-module.exports =
+import _require from './require'
+
+export default
 
   require: (coffeeSource, filePath) ->
     filePath or= module.parent.filename
-    (require './require') coffeeSource, filePath
+    _require coffeeSource, filePath
 
   # register: require './register'
 
